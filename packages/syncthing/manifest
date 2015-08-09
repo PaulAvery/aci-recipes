@@ -1,0 +1,46 @@
+{
+	"acKind": "ImageManifest",
+	"acVersion": "0.6.1",
+	"name": "acis.falbertz.org/syncthing",
+	"labels": [
+		{"name": "os", "value": "linux"},
+		{"name": "arch", "value": "amd64"}
+	],
+	"app": {
+		"user": "0",
+		"group": "0",
+		"exec": [
+			"/usr/bin/syncthing",
+			"-home=/srv/config"
+		],
+		"mountPoints": [{
+			"name": "data",
+			"path": "/srv/data"
+		}, {
+			"name": "config",
+			"path": "/srv/config"
+		}],
+		"ports": [
+			{
+				"name": "ui",
+				"port": 8384,
+				"protocol": "tcp"
+			},
+			{
+				"name": "sync",
+				"port": 22000,
+				"protocol": "tcp"
+			},
+			{
+				"name": "discovery-ipv4",
+				"port": 21025,
+				"protocol": "udp"
+			},
+			{
+				"name": "discovery-ipv6",
+				"port": 21026,
+				"protocol": "udp"
+			}
+		]
+	}
+}
