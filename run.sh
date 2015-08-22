@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 ACIDIR=$1
+PACKAGE=$2
 
 if [ -z $ACIDIR ]; then
 	echo 'Please specify a target directory'
@@ -9,10 +10,16 @@ fi
 
 # Build all packages
 BUILDDIR=$(mktemp -d)
-for file in packages/*; do
-	archci "$file" "$BUILDDIR"
+
+if [ -z $PACKAGE ]; then
+	for file in packages/*; do
+		archci "$file" "$BUILDDIR"
+		echo
+	done
+else
+	archci "packages/$PACKAGE" "$BUILDDIR"
 	echo
-done
+fi
 
 # Create gpg key
 gpg --export > "$BUILDDIR/pubkeys.gpg"
