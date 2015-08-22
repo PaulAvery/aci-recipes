@@ -1,0 +1,32 @@
+{
+	"acKind": "ImageManifest",
+	"acVersion": "0.6.1",
+	"name": "acis.falbertz.org/nzbget",
+	"labels": [
+		{"name": "os", "value": "linux"},
+		{"name": "arch", "value": "amd64"}
+	],
+	"app": {
+		"user": "0",
+		"group": "0",
+		"exec": [
+			"/usr/bin/nzbget",
+			"-c", "/srv/conf/nzbget.conf",
+			"-s"
+		],
+		"mountPoints": [{
+			"name": "data",
+			"path": "/srv/data"
+		}, {
+			"name": "config",
+			"path": "/srv/conf"
+		}],
+		"ports": [
+			{
+				"name": "ui",
+				"port": 6789,
+				"protocol": "tcp"
+			}
+		]
+	}
+}
