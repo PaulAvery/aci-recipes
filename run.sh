@@ -3,9 +3,11 @@ set -e
 ACIDIR=$1
 PACKAGE=$2
 
-if [ -z $ACIDIR ]; then
-	echo 'Please specify a target directory'
-	exit 1
+if [ -z $2 ]; then
+	PACKAGE=$1
+	ACIDIR="$(pwd)/out"
+
+	echo "No target directory specified, using $ACIDIR"
 fi
 
 # Build all packages
