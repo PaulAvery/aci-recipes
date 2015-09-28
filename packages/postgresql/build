@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Generate locale
+echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen
+locale-gen
+
+# Adjustments because /run is mounted as a tmpfs in arch-chroot
+chown postgres:postgres /run/postgresql
