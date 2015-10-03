@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -o pipefail
 
 # Setup
 ARCH=()
@@ -35,7 +36,7 @@ function cleanup() {
 	echo "Cleaning Up"
 
 	# Clean up
-	sudo rm -rf "$BUILDDIR"
+	rm -rf "$BUILDDIR"
 
 	echo "Done"
 }
@@ -80,7 +81,15 @@ function buildDocker() {
 		cd $BUILDDIR
 		for PACKAGE in "${DOCKER[@]}"; do
 			echo "Building Docker Package \"$PACKAGE\""
-			docker2aci "docker://$PACKAGE" "$BUILDDIR" > /dev/null
+			FILE=$(docker2aci "docker://$PACKAGE" "$BUILDDIR" | sed -n '$p')
+
+			MOS=$(tar -xOf "$FILE" manifest | sx -jx x.labels | sx -jxlf 'x.name === "os"' | sx -jx x.value)
+			MARCH=$(tar -xOf "$FILE" manifest | sx -jx x.labels | sx -jxlf 'x.name === "arch"' | sx -jx x.value)
+			MNAME=$(tar -xOf "$FILE" manifest | sx -jx 'x.name.split("/").pop()')
+			MVERSION=$(tar -xOf "$FILE" manifest | sx -jx x.labels | sx -jxlf 'x.name === "version"' | sx -jx x.value)
+
+			mkdir -p "images/$MOS/$MARCH"
+			mv "$FILE" "images/$MOS/$MARCH/$MNAME-$MVERSION.aci"
 		done
 		cd - > /dev/null
 
@@ -94,12 +103,9 @@ function finalize() {
 	# Create gpg key
 	gpg --export > "$BUILDDIR/pubkeys.gpg"
 
-	# Copy packages to target directory after setting permissions
-	sudo chmod -R 644 "$BUILDDIR"
-	sudo chmod -R a+X "$BUILDDIR"
-	sudo chown -R root:root "$BUILDDIR"
-
-	sudo cp -rp "$BUILDDIR"/* "$ACIDIR"
+	# Copy packages to target directory
+	mkdir -p "$ACIDIR"
+	cp -rp "$BUILDDIR"/* "$ACIDIR"
 }
 
 # Run cleanup on error
