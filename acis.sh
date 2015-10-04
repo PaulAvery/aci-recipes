@@ -7,6 +7,7 @@ ARCH=()
 DOCKER=()
 ACIDIR="$(pwd)/out"
 BUILDDIR=$(mktemp -d)
+VERBOSE=false
 
 function printUsage() {
 	echo
@@ -19,6 +20,9 @@ function printUsage() {
 	echo 'Flags:'
 	echo '  -h|--help'
 	echo '      Show this help'
+	echo
+	echo '  -v|--verbose'
+	echo '      Print more output'
 	echo
 	echo '  -a|--arch'
 	echo '      Compile all arch packages'
@@ -69,7 +73,12 @@ function buildArch() {
 	if [ ! ${#ARCH[@]} -eq 0 ]; then
 		for PACKAGE in "${ARCH[@]}"; do
 			echo "Building Arch Package \"$PACKAGE\""
-			archci "packages/$PACKAGE" "$BUILDDIR"
+
+			if [ "$VERBOSE" == "true" ]; then
+				archci "packages/$PACKAGE" "$BUILDDIR"
+			else
+				archci "packages/$PACKAGE" "$BUILDDIR" > /dev/null
+			fi
 		done
 
 		echo
@@ -133,6 +142,9 @@ while [[ $# > 0 ]]; do
 			ARCH=(*/)
 			shopt -u nullglob
 			cd - > /dev/null
+			;;
+		-v|--verbose)
+			VERBOSE=true
 			;;
 		*)
 			ARCH+=("$1")

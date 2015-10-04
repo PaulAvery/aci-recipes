@@ -18,6 +18,9 @@ Flags:
   -h|--help
       Show this help
 
+  -v|--verbose
+      Print more output
+
   -a|--arch
       Compile all arch packages
 
