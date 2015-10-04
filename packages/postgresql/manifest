@@ -32,7 +32,7 @@
 			"path": "/var/lib/postgres/data"
 		}],
 		"ports": [{
-			"name": "db",
+			"name": "postgresql",
 			"port": 5432,
 			"protocol": "tcp"
 		}]
