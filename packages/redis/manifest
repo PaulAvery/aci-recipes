@@ -1,0 +1,29 @@
+{
+	"acKind": "ImageManifest",
+	"acVersion": "0.7.0",
+	"name": "aci.falbertz.org/redis",
+	"labels": [{
+		"name": "os",
+		"value": "linux"
+	}, {
+		"name": "arch",
+		"value": "amd64"
+	}],
+	"app": {
+		"user": "redis",
+		"group": "redis",
+		"exec": [
+			"/usr/bin/redis-server",
+			"/etc/redis/redis.conf"
+		],
+		"mountPoints": [{
+			"name": "config",
+			"path": "/etc/redis"
+		}],
+		"ports": [{
+			"name": "redis",
+			"port": 6379,
+			"protocol": "tcp"
+		}]
+	}
+}
