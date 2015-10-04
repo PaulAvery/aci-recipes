@@ -69,7 +69,7 @@ function buildArch() {
 	if [ ! ${#ARCH[@]} -eq 0 ]; then
 		for PACKAGE in "${ARCH[@]}"; do
 			echo "Building Arch Package \"$PACKAGE\""
-			archci "packages/$PACKAGE" "$BUILDDIR" > /dev/null
+			archci "packages/$PACKAGE" "$BUILDDIR"
 		done
 
 		echo
@@ -101,7 +101,7 @@ function finalize() {
 	echo "Outputting GPG Key to \"$ACIDIR/pubkeys.gpg\""
 
 	# Create gpg key
-	gpg --export > "$BUILDDIR/pubkeys.gpg"
+	gpg --armor --export-secret-keys > "$BUILDDIR/pubkeys.gpg"
 
 	# Copy packages to target directory
 	mkdir -p "$ACIDIR"
