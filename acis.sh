@@ -110,7 +110,7 @@ function finalize() {
 	echo "Outputting GPG Key to \"$ACIDIR/pubkeys.gpg\""
 
 	# Create gpg key
-	gpg --armor --export-secret-keys > "$BUILDDIR/pubkeys.gpg"
+	gpg --export > "$BUILDDIR/pubkeys.gpg"
 
 	# Copy packages to target directory
 	mkdir -p "$ACIDIR"
