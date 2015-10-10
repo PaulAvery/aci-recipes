@@ -117,9 +117,6 @@ function finalize() {
 	cp -rp "$BUILDDIR"/* "$ACIDIR"
 }
 
-# Run cleanup on error
-trap cleanup EXIT
-
 # Parse arguments
 while [[ $# > 0 ]]; do
 	arg="$1"
@@ -153,6 +150,9 @@ while [[ $# > 0 ]]; do
 
 	shift
 done
+
+# Run cleanup on error
+trap cleanup EXIT
 
 # Run all this stuff
 printInfo
