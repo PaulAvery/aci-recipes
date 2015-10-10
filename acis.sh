@@ -151,6 +151,13 @@ while [[ $# > 0 ]]; do
 	shift
 done
 
+for i in "${ARCH[@]}"; do
+	if [ ! -d "$(pwd)/packages/$i" ]; then
+		echo "Package '$i' not found!"
+		exit 1
+	fi
+done
+
 # Run cleanup on error
 trap cleanup EXIT
 
