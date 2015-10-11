@@ -8,6 +8,7 @@ DOCKER=()
 ACIDIR="$(pwd)/out"
 BUILDDIR=$(mktemp -d)
 VERBOSE=false
+SILENT='--silent'
 
 function printUsage() {
 	echo
@@ -75,9 +76,9 @@ function buildArch() {
 			echo "Building Arch Package \"$PACKAGE\""
 
 			if [ "$VERBOSE" == "true" ]; then
-				archci "packages/$PACKAGE" "$BUILDDIR"
+				archci $SILENT "packages/$PACKAGE" "$BUILDDIR"
 			else
-				archci "packages/$PACKAGE" "$BUILDDIR" > /dev/null
+				archci $SILENT "packages/$PACKAGE" "$BUILDDIR" > /dev/null
 			fi
 		done
 
@@ -142,6 +143,7 @@ while [[ $# > 0 ]]; do
 			;;
 		-v|--verbose)
 			VERBOSE=true
+			SILENT=''
 			;;
 		*)
 			ARCH+=("$1")
