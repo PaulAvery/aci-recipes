@@ -111,7 +111,7 @@ function finalize() {
 	echo "Outputting GPG Key to \"$ACIDIR/pubkeys.gpg\""
 
 	# Create gpg key
-	gpg --export > "$BUILDDIR/pubkeys.gpg"
+	gpg --export --armor > "$BUILDDIR/pubkeys.gpg"
 
 	# Copy packages to target directory
 	mkdir -p "$ACIDIR"
