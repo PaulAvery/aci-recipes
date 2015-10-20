@@ -1,0 +1,39 @@
+{
+	"acKind": "ImageManifest",
+	"acVersion": "0.7.0",
+	"name": "aci.falbertz.org/gitlab",
+	"labels": [
+		{"name": "os", "value": "linux"},
+		{"name": "arch", "value": "amd64"}
+	],
+	"app": {
+		"user": "gitlab",
+		"group": "gitlab",
+		"workingDirectory": "/usr/share/webapps/gitlab",
+		"environment": [{
+			"name": "RAILS_ENV",
+			"value": "production"
+		}, {
+			"name": "PATH",
+			"value": "/opt/ruby2.1/bin:/usr/bin"
+		}],
+		"exec": [
+			"/usr/bin/gitlab-wrapper"
+		],
+		"mountPoints": [{
+			"name": "repositories",
+			"path": "/var/lib/gitlab/repositories"
+		}, {
+			"name": "config",
+			"path": "/etc/webapp/gitlab"
+		}, {
+			"name": "config-shell",
+			"path": "/etc/webapp/gitlab-shell"
+		}],
+		"ports": [{
+			"name": "gitlab-ui",
+			"port": 8080,
+			"protocol": "tcp"
+		}]
+	}
+}
