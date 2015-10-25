@@ -135,11 +135,7 @@ while [[ $# > 0 ]]; do
 			readarray -t DOCKER < 'packages/docker'
 			;;
 		-a|--arch)
-			cd packages
-			shopt -s nullglob
-			ARCH=(*/)
-			shopt -u nullglob
-			cd - > /dev/null
+			readarray -t ARCH < <(find packages -mindepth 1 -maxdepth 1 -type d | sed 's!.*/!!')
 			;;
 		-v|--verbose)
 			VERBOSE=true
