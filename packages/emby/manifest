@@ -1,0 +1,48 @@
+{
+	"acKind": "ImageManifest",
+	"acVersion": "0.7.0",
+	"name": "aci.falbertz.org/emby",
+	"labels": [{
+		"name": "os",
+		"value": "linux"
+	}, {
+		"name": "arch",
+		"value": "amd64"
+	}],
+	"app": {
+		"user": "emby",
+		"group": "emby",
+		"exec": [
+			"/usr/bin/emby-server"
+		],
+		"environment": [{
+			"name": "MONO",
+			"value": "/usr/bin/mono"
+		}, {
+			"name": "FFMPEG",
+			"value": "/usr/bin/ffmpeg"
+		}, {
+			"name": "FFPROBE",
+			"value": "/usr/bin/ffprobe"
+		}, {
+			"name": "PROGRAM_DATA",
+			"value": "/var/lib/emby"
+		}],
+		"mountPoints": [{
+			"name": "config",
+			"path": "/var/lib/emby/config"
+		}, {
+			"name": "data",
+			"path": "/var/lib/emby/data"
+		}],
+		"ports": [{
+			"name": "emby-ui",
+			"port": 8096,
+			"protocol": "tcp"
+		}, {
+			"name": "emby-websocket",
+			"port": 8945,
+			"protocol": "tcp"
+		}]
+	}
+}
