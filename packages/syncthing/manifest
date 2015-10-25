@@ -22,22 +22,22 @@
 		}],
 		"ports": [
 			{
-				"name": "ui",
+				"name": "syncthing-ui",
 				"port": 8384,
 				"protocol": "tcp"
 			},
 			{
-				"name": "sync",
+				"name": "syncthing-sync",
 				"port": 22000,
 				"protocol": "tcp"
 			},
 			{
-				"name": "discovery-ipv4",
+				"name": "syncthing-discovery-ipv4",
 				"port": 21025,
 				"protocol": "udp"
 			},
 			{
-				"name": "discovery-ipv6",
+				"name": "syncthing-discovery-ipv6",
 				"port": 21026,
 				"protocol": "udp"
 			}
