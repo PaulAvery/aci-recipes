@@ -1,7 +1,7 @@
 {
 	"acKind": "ImageManifest",
 	"acVersion": "0.7.0",
-	"name": "aci.falbertz.org/postgresql",
+	"name": "aci.albertz.io/postgresql",
 	"labels": [{
 		"name": "os",
 		"value": "linux"

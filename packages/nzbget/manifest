@@ -1,7 +1,7 @@
 {
 	"acKind": "ImageManifest",
 	"acVersion": "0.7.0",
-	"name": "aci.falbertz.org/nzbget",
+	"name": "aci.albertz.io/nzbget",
 	"labels": [
 		{"name": "os", "value": "linux"},
 		{"name": "arch", "value": "amd64"}

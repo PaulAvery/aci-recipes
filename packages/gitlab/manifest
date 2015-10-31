@@ -1,7 +1,7 @@
 {
 	"acKind": "ImageManifest",
 	"acVersion": "0.7.0",
-	"name": "aci.falbertz.org/gitlab",
+	"name": "aci.albertz.io/gitlab",
 	"labels": [
 		{"name": "os", "value": "linux"},
 		{"name": "arch", "value": "amd64"}

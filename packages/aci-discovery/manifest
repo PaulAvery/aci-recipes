@@ -1,7 +1,7 @@
 {
 	"acKind": "ImageManifest",
 	"acVersion": "0.7.1",
-	"name": "aci.falbertz.org/aci-discovery",
+	"name": "aci.albertz.io/aci-discovery",
 	"labels": [{
 		"name": "os",
 		"value": "linux"
