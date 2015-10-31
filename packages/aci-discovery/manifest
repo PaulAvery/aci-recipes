@@ -1,0 +1,28 @@
+{
+	"acKind": "ImageManifest",
+	"acVersion": "0.7.1",
+	"name": "aci.falbertz.org/aci-discovery",
+	"labels": [{
+		"name": "os",
+		"value": "linux"
+	}, {
+		"name": "arch",
+		"value": "amd64"
+	}],
+	"app": {
+		"user": "0",
+		"group": "0",
+		"exec": [
+			"/usr/bin/aci-discovery"
+		],
+		"ports": [{
+			"name": "aci-discovery",
+			"port": 80,
+			"protocol": "tcp"
+		}],
+		"mountPoints": [{
+			"name": "images",
+			"path": "/opt/aci"
+		}]
+	}
+}
