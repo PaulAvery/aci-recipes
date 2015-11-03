@@ -110,8 +110,11 @@ function buildDocker() {
 function finalize() {
 	echo "Outputting GPG Key to \"$ACIDIR/pubkeys.gpg\""
 
+	# Get the default key
+	KEY="$(gpg --list-secret-keys | grep -oPm1 '^uid.*\K(?<=<).*(?=>)')";
+
 	# Create gpg key
-	gpg --export --armor > "$BUILDDIR/pubkeys.gpg"
+	gpg --export --armor "$KEY" > "$BUILDDIR/pubkeys.gpg"
 
 	# Copy packages to target directory
 	mkdir -p "$ACIDIR"
