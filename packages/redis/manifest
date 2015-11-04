@@ -16,6 +16,12 @@
 			"/usr/bin/redis-server",
 			"/etc/redis/redis.conf"
 		],
+		"eventHandlers": [{
+			"name": "pre-start",
+			"exec": [
+				"/usr/local/bin/prepare-redis"
+			]
+		}],
 		"mountPoints": [{
 			"name": "config",
 			"path": "/etc/redis"

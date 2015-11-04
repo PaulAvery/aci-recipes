@@ -1,0 +1,4 @@
+#!/bin/bash
+if [ ! -f /etc/redis/redis.conf ]; then
+	cp /etc/redis.conf /etc/redis/redis.conf
+fi
