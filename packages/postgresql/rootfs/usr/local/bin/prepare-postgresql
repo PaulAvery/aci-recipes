@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ -f /var/lib/postgres/data/PG_VERSION ]; then
+	postgresql-check-db-dir /var/lib/postgres/data
+else
+	initdb --locale en_US.UTF-8 -D /var/lib/postgres/data
+fi
