@@ -27,7 +27,7 @@
 			]
 		}],
 		"mountPoints": [{
-			"name": "data",
+			"name": "postgres-data",
 			"path": "/var/lib/postgres/data"
 		}],
 		"ports": [{

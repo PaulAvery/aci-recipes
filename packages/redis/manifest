@@ -23,7 +23,7 @@
 			]
 		}],
 		"mountPoints": [{
-			"name": "config",
+			"name": "redis-config",
 			"path": "/etc/redis"
 		}],
 		"ports": [{
