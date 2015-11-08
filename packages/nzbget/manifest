@@ -7,26 +7,42 @@
 		{"name": "arch", "value": "amd64"}
 	],
 	"app": {
-		"user": "0",
-		"group": "0",
+		"user": "nobody",
+		"group": "nobody",
 		"exec": [
 			"/usr/bin/nzbget",
-			"-c", "/srv/conf/nzbget.conf",
-			"-s"
+			"-n", "-s",
+
+			"-o", "MainDir=/srv",
+			"-o", "DestDir=${MainDir}/downloads",
+			"-o", "NzbDir=${MainDir}/nzbs",
+			"-o", "InterDir=${MainDir}/tmp/downloads",
+			"-o", "QueueDir=${MainDir}/tmp/queue",
+			"-o", "TempDir=${MainDir}/tmp/state",
+			"-o", "WebDir=/usr/share/nzbget/webui",
+
+			"-o", "ErrorTarget=screen",
+			"-o", "WarningTarget=screen",
+			"-o", "InfoTarget=screen",
+			"-o", "DetailTarget=none",
+
+			"-o", "ConfigTemplate=/usr/share/nzbget/nzbget.conf",
+			"-o", "ControlPort=6789",
+
+			"-o", "OutputMode=log",
+			"-o", "SevenZipCmd=/usr/bin/7za"
 		],
 		"mountPoints": [{
-			"name": "data",
-			"path": "/srv/data"
+			"name": "nzbget-downloads",
+			"path": "/srv/downloads"
 		}, {
-			"name": "config",
-			"path": "/srv/conf"
+			"name": "nzbget-nzbs",
+			"path": "/srv/nzbs"
 		}],
-		"ports": [
-			{
-				"name": "ui",
-				"port": 6789,
-				"protocol": "tcp"
-			}
-		]
+		"ports": [{
+			"name": "nzbget",
+			"port": 6789,
+			"protocol": "tcp"
+		}]
 	}
 }
