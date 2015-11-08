@@ -29,11 +29,11 @@
 			"value": "/var/lib/emby"
 		}],
 		"mountPoints": [{
-			"name": "config",
-			"path": "/var/lib/emby/config"
+			"name": "emby-data",
+			"path": "/var/lib/emby"
 		}, {
-			"name": "data",
-			"path": "/var/lib/emby/data"
+			"name": "emby-media",
+			"path": "/media"
 		}],
 		"ports": [{
 			"name": "emby-ui",
