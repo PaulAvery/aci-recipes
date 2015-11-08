@@ -21,7 +21,7 @@
 			"protocol": "tcp"
 		}],
 		"mountPoints": [{
-			"name": "images",
+			"name": "aci-discovery-images",
 			"path": "/opt/aci"
 		}]
 	}
