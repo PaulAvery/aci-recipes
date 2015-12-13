@@ -1,0 +1,33 @@
+{
+	"acKind": "ImageManifest",
+	"acVersion": "0.7.1",
+	"name": "aci.albertz.io/sonarr",
+	"labels": [
+		{"name": "os", "value": "linux"},
+		{"name": "arch", "value": "amd64"}
+	],
+	"app": {
+		"user": "nobody",
+		"group": "nobody",
+		"exec": [
+			"/usr/bin/sonarr",
+			"--no-browser",
+			"-data=/etc/sonarr"
+		],
+		"mountPoints": [{
+			"name": "sonarr-in",
+			"path": "/srv/downloads"
+		}, {
+			"name": "sonarr-out",
+			"path": "/srv/nzbs"
+		}, {
+			"name": "sonarr-config",
+			"path": "/etc/sonarr"
+		}],
+		"ports": [{
+			"name": "nzbget",
+			"port": 8989,
+			"protocol": "tcp"
+		}]
+	}
+}

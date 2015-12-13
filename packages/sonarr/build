@@ -1,0 +1,2 @@
+mkdir /etc/sonarr
+chown nobody:nobody /etc/sonarr
