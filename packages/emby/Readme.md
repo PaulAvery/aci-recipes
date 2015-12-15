@@ -10,7 +10,6 @@ rkt run	aci.albertz.io/emby \
 	--volume emby-media,kind=host,source=/srv/media \
 	--volume resolv,kind=host,source=/etc/resolv.conf \
 	--mount volume=resolv,target=/etc/resolv.conf \
-
 ```
 
 Note how we mounted our `resolv.conf` as well. Otherwise software inside the container cannot resolve any hostnames.
