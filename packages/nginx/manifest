@@ -1,0 +1,36 @@
+{
+	"acKind": "ImageManifest",
+	"acVersion": "0.7.1",
+	"name": "aci.albertz.io/nginx",
+	"labels": [
+		{"name": "os", "value": "linux"},
+		{"name": "arch", "value": "amd64"}
+	],
+	"app": {
+		"user": "0",
+		"group": "0",
+		"exec": [
+			"/usr/bin/nginx",
+			"-g", "daemon off; error_log stderr;"
+		],
+		"eventHandlers": [{
+			"name": "pre-start",
+			"exec": [
+				"/usr/local/bin/prepare-nginx"
+			]
+		}],
+		"mountPoints": [{
+			"name": "nginx-config",
+			"path": "/etc/nginx"
+		}],
+		"ports": [{
+			"name": "nginx-http",
+			"port": 80,
+			"protocol": "tcp"
+		}, {
+			"name": "nginx-https",
+			"port": 443,
+			"protocol": "tcp"
+		}]
+	}
+}

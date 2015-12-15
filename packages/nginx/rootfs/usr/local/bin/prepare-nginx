@@ -1,0 +1,4 @@
+#!/bin/bash
+if [ ! -f /etc/nginx/nginx.conf ]; then
+	cp -r /etc/nginx-conf/* /etc/nginx/
+fi
