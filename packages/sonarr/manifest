@@ -15,17 +15,11 @@
 			"-data=/etc/sonarr"
 		],
 		"mountPoints": [{
-			"name": "sonarr-in",
-			"path": "/srv/downloads"
-		}, {
-			"name": "sonarr-out",
-			"path": "/srv/nzbs"
-		}, {
 			"name": "sonarr-config",
 			"path": "/etc/sonarr"
 		}],
 		"ports": [{
-			"name": "nzbget",
+			"name": "sonarr",
 			"port": 8989,
 			"protocol": "tcp"
 		}]
