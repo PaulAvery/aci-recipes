@@ -1,0 +1,28 @@
+{
+	"acKind": "ImageManifest",
+	"acVersion": "0.7.1",
+	"name": "aci.albertz.io/letsencrypt",
+	"labels": [{
+		"name": "os",
+		"value": "linux"
+	}, {
+		"name": "arch",
+		"value": "amd64"
+	}],
+	"app": {
+		"user": "nobody",
+		"group": "nobody",
+		"exec": [
+			"/usr/bin/letsencrypt",
+			"certonly", "-t", "--webroot",
+			"-w", "/srv/webroot"
+		],
+		"mountPoints": [{
+			"name": "letsencrypt-webroot",
+			"path": "/srv/webroot/.well-known/acme-challenge"
+		}, {
+			"name": "letsencrypt-config",
+			"path": "/etc/letsencrypt"
+		}]
+	}
+}

@@ -1,0 +1,3 @@
+#!/bin/bash
+mkdir -p /srv/webroot/.well-known/acme-challenge
+chown -R nobody:nobody /{etc,var/lib,var/log}/letsencrypt /srv/webroot
