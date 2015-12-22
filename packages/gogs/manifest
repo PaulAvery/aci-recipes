@@ -1,0 +1,47 @@
+{
+	"acKind": "ImageManifest",
+	"acVersion": "0.7.1",
+	"name": "aci.albertz.io/gogs",
+	"labels": [
+		{"name": "os", "value": "linux"},
+		{"name": "arch", "value": "amd64"}
+	],
+	"app": {
+		"user": "gogs",
+		"group": "gogs",
+		"environment": [{
+			"name": "USER",
+			"value": "gogs"
+		}, {
+			"name": "HOME",
+			"value": "/home/gogs"
+		}],
+		"workingDirectory": "/srv/gogs",
+		"eventHandlers": [{
+			"name": "pre-start",
+			"exec": [
+				"/usr/local/bin/prepare-gogs"
+			]
+		}],
+		"exec": [
+			"/usr/share/gogs/gogs", "web",
+			"--config", "/etc/gogs/app.ini"
+		],
+		"mountPoints": [{
+			"name": "gogs-config",
+			"path": "/etc/gogs"
+		}, {
+			"name": "gogs-data",
+			"path": "/srv/gogs"
+		}],
+		"ports": [{
+			"name": "gogs-http",
+			"port": 3000,
+			"protocol": "tcp"
+		}, {
+			"name": "gogs-ssh",
+			"port": 22,
+			"protocol": "tcp"
+		}]
+	}
+}

@@ -1,0 +1,4 @@
+#!/bin/bash
+if [ ! -f /etc/gogs/app.ini ]; then
+	cp -r /srv/app.ini /etc/gogs/app.ini
+fi

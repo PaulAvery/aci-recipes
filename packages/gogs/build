@@ -1,0 +1,5 @@
+#!/bin/bash
+mkdir /etc/gogs
+chown gogs:gogs /etc/gogs
+
+mv /srv/gogs/conf/app.ini /srv/app.ini
