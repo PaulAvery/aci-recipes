@@ -1,2 +1,0 @@
-#!/bin/bash
-sudo mount --bind /dev "$1/dev"

@@ -1,5 +1,0 @@
-#!/bin/bash
-set -e
-set -o pipefail
-
-{ /usr/bin/bundle-2.1 exec "sidekiq -q post_receive -q mailer -q system_hook -q project_web_hook -q gitlab_shell -q common -q default -q archive_repo -e production -L /var/log/gitlab/sidekiq.log >> /var/log/gitlab/sidekiq.log 2>&1" ; /usr/bin/bundle-2.1 exec "unicorn_rails -c /usr/share/webapps/    gitlab/config/unicorn.rb -E production" ; }
