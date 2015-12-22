@@ -9,6 +9,7 @@ ACIDIR="$(pwd)/out"
 BUILDDIR=$(mktemp -d)
 VERBOSE=false
 SILENT='--silent'
+OVERWRITE='-n'
 
 function printUsage() {
 	echo
@@ -118,7 +119,7 @@ function finalize() {
 
 	# Copy packages to target directory
 	mkdir -p "$ACIDIR"
-	cp -rp "$BUILDDIR"/* "$ACIDIR"
+	cp -rp $OVERWRITE "$BUILDDIR"/* "$ACIDIR"
 }
 
 # Parse arguments
@@ -143,6 +144,9 @@ while [[ $# > 0 ]]; do
 		-v|--verbose)
 			VERBOSE=true
 			SILENT=''
+			;;
+		-f|--force)
+			OVERWRITE=''
 			;;
 		*)
 			ARCH+=("$1")
