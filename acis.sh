@@ -32,6 +32,9 @@ function printUsage() {
 	echo '  -d|--docker'
 	echo '      Compile all docker packages'
 	echo
+	echo '  -f|--force'
+	echo '      Overwrite any already existing package versions'
+	echo
 	echo '  -t|--target OUTDIR'
 	echo '      Output all files to OUTDIR. Defaults to "$PWD/out"'
 	echo
